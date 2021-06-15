@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} News-Geeks | About {% endblock %}
+
+{% block active %} active {% endblock %}
+
+{% block body %}
+<div class="container mt-2 mb-2 text-center bg-dark text-white rounded-3">
+<h1>Submit Press Release Here</h1><a href="/blog/submit" role="button" class="btn btn-primary btn-lg">Submit</a>
+ <hr>
+</div>
+
+<div class="container mb-3 my-2">
+<h1 class="text-center fw-bold">Latest Press Releases</h1>
+    {% for post in allPosts %}
+<div class="col-md-12">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{post.keyword}}</strong>
+          <h3 class="mb-0">{{post.title}}</h3>
+          <div class="mb-1 text-muted">{{post.timestamp}}</div>
+          <p class="card-text mb-auto">{{post.content|safe|truncatechars:500}}</p>
+            <div class="my-2">
+          <a href="/blog/{{post.slug}}" class="btn btn-primary h5 my-2">Continue reading</a>
+             </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

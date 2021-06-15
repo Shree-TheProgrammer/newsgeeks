@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %} BlogPost {% endblock %}
+
+{% block body %}
+<div class="container my-3 border border-dark text-left">
+<h1>{{allPost.title}}</h1>
+<pre>{{allPost.timestamp}}</pre> &nbsp; <pre>{{allPost.keyword}}</pre>
+<p>{{allPost.content|safe}}</p>
+</div>
+{% endblock %}

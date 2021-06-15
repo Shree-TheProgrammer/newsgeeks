@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %} Submit Press Release | NewsGeeks {% endblock %}
+
+{% block body %}
+<div class="container mt-3 mb-3">
+
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+      tinymce.init({
+  selector: '#mytextarea',
+  height:500,
+  plugins: [
+      'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'table emoticons template paste help'
+    ],
+    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+      'bullist numlist outdent indent | link image | print preview media fullpage | ' +
+      'forecolor backcolor emoticons | help',
+    menu: {
+      favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons'}
+    },
+    menubar: 'favs file edit view insert format tools table help',
+    content_css: 'css/content.css',
+});
+    </script>
+  </head>
+
+  <body>
+  <h1 class="text-center border border-dark bg-info fst-italic">SUBMIT PRESS RELEASE</h1><hr><br>
+  <form method="post" action="/submit">
+   <div class="mb-3">
+    <label for="title" class="form-label h3">Title</label>
+    <input type="text" class="form-control" id="title" name="title" aria-describedby="Title" required>
+  </div>
+   <div class="mb-3">
+    <label for="keyword" class="form-label h3">Keyword [Enter only 1 Keyword]</label>
+    <input type="text" class="form-control" id="keyword" name="keyword" aria-describedby="keyword" required>
+  </div>
+    <div class="mb-3 col-md-3">
+   <label for="category" class="form-label fw-bold"><h3>Category:</h3></label>
+<input class="form-control" list="datalistOptions" id="category" name="category" placeholder="Select">
+<datalist id="datalistOptions">
+  <option value="Aerospace and Defence">
+  <option value="Business">
+  <option value="Latest News">
+  <option value="Featured News">
+  <option value="Electronics">
+  <option value="Energy and Power">
+  <option value="Agriculture">
+  <option value="Automotive">
+  <option value="Consumer Goods">
+  <option value="Retail">
+  <option value="Healthcare">
+  <option value="Food & Beverage">
+  <option value="Information Technology">
+  <option value="Software">
+  <option value="Construction & Real Estate">
+  <option value="Packaging & Transport">
+  <option value="Telecom and Datacom">
+  <option value="Logistics">
+</datalist>
+    </div>
+   <div class="mb-3">
+    <label for="keyword" class="form-label h3">Description:</label>
+    <textarea id="mytextarea" name="content"></textarea>
+  </div>
+       {% csrf_token %}
+      <button type="submit" class="btn btn-primary" id="submit">SUBMIT</button>
+    </form>
+  </body>
+</div>
+{% endblock %}
